@@ -15,7 +15,7 @@
     
 2. ??? ```type Buffers```: link here: https://golang.org/pkg/net/#Buffers.Read. I am not quite sure about the meaning/usage of ```func (v *Buffers)``` here in ```func (v *Buffers) Read(p []byte) (n int, err error)```. It seems like Buffers is a ```type Buffers [][]byte```, 
 
-3. some notes on this link: https://syslog.ravelin.com/byte-vs-string-in-go d645b67ca7ff. 
+3. some notes on this link:https://syslog.ravelin.com/byte-vs-string-in-go-d645b67ca7ff
 
     ```[]byte``` is something like this:
     
