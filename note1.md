@@ -1,4 +1,4 @@
-# h1 ff
+# notes1
 
 1. write-ahead logging: The changes are first recorded in the log, which must be written to stable storage, before the changes are written to the database; all modifications are written to a log before they are applied.
 
@@ -13,4 +13,55 @@
     
     If a write-ahead log is used, the program can check this log and compare what it was supposed to be doing when it unexpectedly lost power to what was actually done. On the basis of this comparison, the program could decide to undo what it had started, complete what it had started, or keep things as they are.
     
+2. ??? ```type Buffers```: link here: https://golang.org/pkg/net/#Buffers.Read. I am not quite sure about the meaning/usage of ```func (v *Buffers)``` here in ```func (v *Buffers) Read(p []byte) (n int, err error)```. It seems like Buffers is a ```type Buffers [][]byte```, 
+
+3. some notes on this link: https://syslog.ravelin.com/byte-vs-string-in-go d645b67ca7ff. 
+
+    ```[]byte``` is something like this:
+    
+    ```c
+        type slice struct {
+           data uintptr
+           len int
+           cap int
+        }
+    ```
+    ```string``` is something like this:
+    ```c
+        type string struct {
+            data uintptr
+            len int
+        }
+    ```
+
+
+
+4. link here: http://www.golangbootcamp.com/book/methods.
+
+    4.1: the difference between ```method``` and ```function```
+    Note: A frequently asked question is “what is the difference between a function and a method”. A method is a function that has a defined receiver, in OOP terms, a method is a function on an instance of an object.
+    
+    4.2: So far we’ve seen ```Printf```, which prints the formatted string to os.Stdout. ```Sprintf``` formats and returns a string without printing it anywhere. Example:
+link: https://gobyexample.com/string-formatting
+    ```c
+        s := fmt.Sprintf("a %s", "string")
+        fmt.Println(s)
+    ```
+    4.3: Go does not have classes. However, you can define methods on struct types. ```Greeting()``` is a method that defined on struct ```User```. See the following code:
+    ```c
+    type User struct {
+	    FirstName, LastName string
+    }
+
+    func (u User) Greeting() string {
+	    return fmt.Sprintf("Dear %s %s", u.FirstName, u.LastName)
+    }
+    ```
+    The method receiver appears in its own argument list between the func keyword and the method name. so it is clear that the method receiver in this case is ```(u User)```, and that means, a ```User struct``` instance have a method ```Greeting()```. we can do ```u.Greeting()``` in our code. 
+    
+    4.4
+
+
+
+
     
